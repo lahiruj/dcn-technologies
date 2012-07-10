@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * Implementation of hook_menu().
+ */
+function accenture_menu() {
+  $items = array();
+  /*
+  $items['admin/settings/accenture'] = array(
+    'title'            => 'Remember me settings',
+    'description'      => 'Configure settings like session time out for accenture module.',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('accenture_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file'             => 'includes/accenture.admin.inc',
+    'type'             => MENU_NORMAL_ITEM
+  );
+
+  $base = array(
+    'type'             => MENU_CALLBACK,
+    'access arguments' => array('administer site configuration'),
+    'file'             => 'includes/accenture.users.inc',
+  );
+  */
+
+  return $items;
+}
+
+/**
+ * Implementation of hook_block().
+ */
+function accenture_block($op = 'list', $delta = 0, $edit = array()) {
+  global $user;
+
+  if ($op == 'list') {
+    $blocks[0]['info'] = t('Latest News');
+    $blocks[0]['cache'] = BLOCK_NO_CACHE;
+    return $blocks;
+  }
+  else if ($op == 'view') {
+    $block = array();
+
+    switch ($delta) {
+      case 0:
+      	$block['subject'] = t('Latest News');
+      	$block['content'] = accenture_get_news();
+
+        return $block;
+    }
+  }
+}
+
+
+/**
+ * Implementation of hook_help().
+ */
+function accenture_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#accenture' :
+      return t('Accenture custom module.');
+  }
+}
+
+function accenture_get_news(){
+	$news = '<div id="latest_news_wrapper"><ul id="sidebar_news">';
+	
+	$all_news = db_query('SELECT nid FROM {node} WHERE type = "news"');
+		
+	while ($news_id = db_fetch_object($all_news)) {
+		$news_node = node_load($news_id->nid);
+		//$news .= print_r($news_node, true);
+		$news .= '<li><strong>'. $news_node->title.'</strong><p>'.$news_node->body.'</p></li>';		
+		//$news .=	print_r($news_node	, true);
+	}
+										
+	$news .= '</ul></div>';
+	
+	return $news;
+}

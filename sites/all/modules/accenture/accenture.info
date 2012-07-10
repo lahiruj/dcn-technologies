@@ -1,0 +1,8 @@
+name = Accenture
+description = "Accenture custom module"
+core = 6.x
+version = "6.x-2.1"
+core = "6.x"
+project = "accenture"
+datestamp = "1243275270"
+

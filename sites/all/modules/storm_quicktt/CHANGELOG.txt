@@ -1,0 +1,84 @@
+/* $Id*/
+
+
+storm_quicktt 6.x-1.0, 2009-12-07
+---------------------------------
+- Intial Public Release
+
+storm_quicktt 6.x-1.x, 2009-11-26 (development release)
+-------------------------------------------------------
+- FEATURE #643452 by jalama: Allow default value for billable
+
+storm_quicktt 6.x-1.x, 2009-11-03 (development release)
+-------------------------------------------------------
+- BUG #623968 by kewlguy: fixed a problem with strpos()
+
+storm_quicktt 6.x-1.x, 2009-11-03 (development release)
+-------------------------------------------------------
+- BUG #622272 by kewlguy: RDF requires ajax data to be encapsulated in wellformed tags
+- FEATURE: Updated jQuery.timers from version 1.1.3 to 1.2
+- FEATURE: Renamed the jQuery.timers file so that it's version independant
+- FEATURE: Integrated a small textfield while timetracking is active to allow capturing of notes. These notes get included into the boy field of the timetracking node and can later be edited as usual.
+- BUG: Make sure that timer for updating elapsed time gets properly stopped when timetracking gets stopped.
+- ISSUE: Trying to avoid duplicate timer-events if the same page is open in more than one browser tab, not resolved yet. This doesn't cause a real issue with the data, but it causes too much traffic between the browser and the server.
+- IMPORTANT: Please also update the module storm_dashboard!!!
+
+storm_quicktt 6.x-1.x, 2009-09-17 (development release)
+-------------------------------------------------------
+- BUG: Make sure that JS, CSS and settings only get loaded once even if QuickTT and Dashboard are installed
+- BUG: The "(Paused)" info wasn't always been displayed properly
+
+storm_quicktt 6.x-1.x, 2009-09-16 (development release)
+-------------------------------------------------------
+- BUG: Edit link for created timetracking node has the wrong destination parameter for after editing the node
+- API: Made storm_quicktt_add_resources() available to load necessary resources even if the QuickTT block isn't visible
+- BUG 578726 by gnu4ever and GiorgosK: Provide the URL for JQuery AJAX dynamically
+
+storm_quicktt 6.x-1.x, 2009-09-15 (development release)
+-------------------------------------------------------
+- FEATURE 346131 by Jay Matwichuk, Mark_Watson27 and Magnity: implemented Pause and Resume for timetracking
+- FEATURE: Replaced AJAX by JQuery, that became necessary because of implementation of the above feature
+- FEATURE: Implemented a JQuery timer and the tracked time gets updated once a minute to the database
+- FEATURE: If storm_dashboard is installed, the QuickTT block only displays the project selection and the details are delegated to the bottom left info box of storm_dashboard
+- FEATURE: QuickTT can be used as an API without displaying the block. E.g. use storm_dashboard to start/stop/pause/resume timetracking and forget about the visible part of storm_quicktt
+
+storm_quicktt 6.x-1.x, 2009-09-11 (development release)
+-------------------------------------------------------
+- FEATURE/BUG 574266 by Magnity: Show the block only if the current user has permission to add timetracking
+
+storm_quicktt 6.x-1.x, 2009-09-10 (development release)
+-------------------------------------------------------
+- BUG: Make sure only projects are displayed that the current user has access to
+- FEATURE: Use the org/project/task/ticket name into the title of the timetracking record
+
+storm_quicktt 6.x-1.x, 2009-09-06 (development release)
+-------------------------------------------------------
+- Also moved settings into /admin/setting/storm/..., following the main Storm module
+- Added new function to retreive the nid for the current timetracking object, required by storm_dashboard
+
+storm_quicktt 6.x-1.x, 2009-09-04 (development release)
+-------------------------------------------------------
+- Integrated storm_quicktt with storm_dashboard and therefore allowed tracking for organizations, projects, tasks and tickets
+- Set default to "in progress" for projects to be shown in the block
+
+storm_quicktt 6.x-1.x, 2009-08-17 (development release)
+-------------------------------------------------------
+- Default "Auto-Start Tracking" to TRUE at the beginning of a session.
+
+storm_quicktt 6.x-1.x, 2009-08-15 (development release)
+-------------------------------------------------------
+- Implemented checkbox "Auto-Start Tracking". If not selected, the project list can be used to go to a project page instead of startig time-tracking
+
+storm_quicktt 6.x-1.x, 2009-08-07 (development release)
+-------------------------------------------------------
+- Changed a typo with regard to the array_shift error
+
+storm_quicktt 6.x-1.x, 2009-08-06 (development release)
+-------------------------------------------------------
+- Workaround for rare bug in AHAH where $form['#parameters'] sometimes don't seem to be an array
+- The settings now only display "real" statuses for projects
+- Timetracking is now saved for the current user, not anonymously
+
+storm_quicktt 6.x-1.x, 2009-08-04 (development release)
+-------------------------------------------------------
+- Initial development release
